@@ -7,7 +7,7 @@ namespace AcumaticaDummyProcessingCenter
   [Serializable]
   [PXCacheName("ADPCCustomerProfile")]
   [PXPrimaryGraph(typeof(ADPCCustomerProfileEntry))] 
-  public class ADPCCustomerProfile : IBqlTable
+  public class ADPCCustomerProfile : PXBqlTable, IBqlTable
   {
     #region CustomerProfileID
     [PXDBString(15,  IsKey = true, IsUnicode = true, InputMask = ">CCCCCCCCCCCCCCC")]

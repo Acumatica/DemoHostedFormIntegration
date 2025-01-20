@@ -1,11 +1,13 @@
 using Acumatica.ADPCGateway;
 using Acumatica.ADPCGateway.Model;
+using PX.CCProcessingBase;
 using PX.CCProcessingBase.Interfaces.V2;
 using PX.Common;
 using PX.Data.Update.ExchangeService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Web;
 using System.Web.UI;
@@ -25,15 +27,11 @@ namespace AcumaticaDummyCreditCardPlugin
         {
             string baseUrl, hostedFormURL = string.Empty;
 
-            if (HttpContext.Current != null)
+            if (HttpContext.Current?.Request?.UrlReferrer != null && HttpContext.Current?.Request?.Url != null)
             {
-                Page currentPage = HttpContext.Current.CurrentHandler as Page;
-                if (HttpContext.Current.Request != null && HttpContext.Current.Request.UrlReferrer != null && currentPage != null && HttpContext.Current.Request.Url != null)
-                {
-                    baseUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
-                    var baseUrl2 = VirtualPathUtility.ToAbsolute("~/");
-                    hostedFormURL = baseUrl + baseUrl2 + "Frames/ADCPPaymentConnector.html";
-                }
+                baseUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
+                var baseUrl2 = VirtualPathUtility.ToAbsolute("~/");
+                hostedFormURL = baseUrl + baseUrl2 + "/Frames/PaymentConnector.html";
             }
 
             string hfkey = Requests.GetHostedFormUrlKey(ADCPHelper.GetPCGredentials(settingValues));
@@ -46,14 +44,15 @@ namespace AcumaticaDummyCreditCardPlugin
                 {"CPID", customerData.CustomerProfileID},
                 {"CustomerCD", customerData.CustomerCD},
                 {"Width", "400" },
-                {"Height", "300"}
+                {"Height", "300"},
+                {"Callback", hostedFormURL} 
             };
 
             return new HostedFormData() {
                 Caption = "Create Payment Profile",
-                Url = hostedFormURL,
+                Url = HFSUrl,
                 UseGetMethod = true,
-               // Token = token,
+                Token = "CLTokenHostedForm",
                 Parameters = parms
             };
         }

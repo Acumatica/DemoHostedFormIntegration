@@ -6,7 +6,7 @@ namespace AcumaticaDummyProcessingCenter
 {
   [Serializable]
   [PXCacheName("ADPCPaymentProfile")]
-  public class ADPCPaymentProfile : IBqlTable
+  public class ADPCPaymentProfile : PXBqlTable, IBqlTable
   {
     #region CustomerProfileID
     [PXDBString(10, IsKey = true, IsUnicode = true, InputMask = "")]

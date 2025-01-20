@@ -11,7 +11,7 @@ namespace AcumaticaDummyProcessingCenter
   [PXCacheName("ADPC Preferences")]
   [PXPrimaryGraph(typeof(ADPCSetupMaint))]
 
-  public class ADPCSetup : IBqlTable
+  public class ADPCSetup : PXBqlTable, IBqlTable
   {
     #region CPIDNumberingID 
      [PXDBString(10, IsUnicode = true)]

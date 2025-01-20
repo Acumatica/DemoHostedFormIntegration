@@ -6,7 +6,7 @@ namespace AcumaticaDummyProcessingCenter
 {
   [Serializable]
   [PXCacheName("ADPCTransactionHistory")]
-  public class ADPCTransactionHistory : IBqlTable
+  public class ADPCTransactionHistory : PXBqlTable, IBqlTable
   {
     #region ID
     [PXDBIdentity(IsKey = true)]

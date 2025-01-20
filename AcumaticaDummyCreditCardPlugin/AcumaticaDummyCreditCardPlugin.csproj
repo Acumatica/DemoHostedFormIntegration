@@ -6,65 +6,47 @@
     <Company>Acumatica</Company>
     <Product>AcumaticaDummyCreditCardPlugin</Product>
     <Copyright>Copyright © Acumatica 2023</Copyright>
+    <OutputPath>C:\Acumatica\25R1\Bin</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>full</DebugType>
-    <OutputPath>..\..\..\..\Acumatica\23107\Bin\</OutputPath>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <OutputPath>C:\Acumatica\25R1\Bin</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Acumatica.ADPCGateway">
+      <HintPath>..\..\..\..\OneDrive - Acumatica\Documents\Github\AcumaticaDemoHostedFormIntegration\AcumaticaDummyCreditCardPlugin\Customization\AcumaticaDummyCreditCardPlugin\Bin\Acumatica.ADPCGateway.dll</HintPath>
+    </Reference>
+    <Reference Include="Acumatica.RESTClient.ContractBasedApi">
+      <HintPath>..\..\..\..\OneDrive - Acumatica\Documents\Github\AcumaticaDemoHostedFormIntegration\AcumaticaDummyCreditCardPlugin\Customization\AcumaticaDummyCreditCardPlugin\Bin\Acumatica.RESTClient.ContractBasedApi.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\Acumatica\23107\Bin\Newtonsoft.Json.dll</HintPath>
-      <Private>False</Private>
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\..\..\Acumatica\25R1\Bin\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="PX.CCProcessing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\Acumatica\23107\Bin\PX.CCProcessing.dll</HintPath>
-      <Private>False</Private>
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="PX.CCProcessingBase">
+      <HintPath>..\..\..\..\..\..\Acumatica\25R1\Bin\PX.CCProcessingBase.dll</HintPath>
     </Reference>
-    <Reference Include="PX.CCProcessingBase, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\Acumatica\23107\Bin\PX.CCProcessingBase.dll</HintPath>
-      <Private>False</Private>
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="PX.Common">
+      <HintPath>..\..\..\..\..\..\Acumatica\25R1\Bin\PX.Common.dll</HintPath>
     </Reference>
-    <Reference Include="PX.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\Acumatica\23107\Bin\PX.Common.dll</HintPath>
-      <Private>False</Private>
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="PX.Common.Std">
+      <HintPath>..\..\..\..\..\..\Acumatica\25R1\Bin\PX.Common.Std.dll</HintPath>
     </Reference>
-    <Reference Include="PX.Common.Std, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\Acumatica\23107\Bin\PX.Common.Std.dll</HintPath>
-      <Private>False</Private>
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="PX.Data">
+      <HintPath>..\..\..\..\..\..\Acumatica\25R1\Bin\PX.Data.dll</HintPath>
     </Reference>
-    <Reference Include="PX.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\Acumatica\23107\Bin\PX.Data.dll</HintPath>
-      <Private>False</Private>
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="PX.Data.BQL.Fluent">
+      <HintPath>..\..\..\..\..\..\Acumatica\25R1\Bin\PX.Data.BQL.Fluent.dll</HintPath>
     </Reference>
-    <Reference Include="PX.Data.BQL.Fluent, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\Acumatica\23107\Bin\PX.Data.BQL.Fluent.dll</HintPath>
-      <Private>False</Private>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="PX.Objects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\Acumatica\23107\Bin\PX.Objects.dll</HintPath>
-      <Private>False</Private>
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="PX.Objects">
+      <HintPath>..\..\..\..\..\..\Acumatica\25R1\Bin\PX.Objects.dll</HintPath>
     </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Users\evgeny.afanasiev\source\repos\AcumaticaRESTAPIClientForCSharp\Acumatica.ADPCGateway\Acumatica.ADPCGateway.csproj" />
-    <ProjectReference Include="..\..\..\..\Users\evgeny.afanasiev\source\repos\AcumaticaRESTAPIClientForCSharp\Acumatica.RESTClient.ContractBasedApi\Acumatica.RESTClient.ContractBasedApi.csproj" />
   </ItemGroup>
 </Project>

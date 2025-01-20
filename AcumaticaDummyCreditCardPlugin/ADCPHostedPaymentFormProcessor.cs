@@ -22,24 +22,13 @@ namespace AcumaticaDummyCreditCardPlugin
         }
         public HostedFormData GetDataForPaymentForm(ProcessingInput inputData)
         {
-            string baseUrl, hostedFormURL;
-            baseUrl = PXContext.Session["CCPaymentConnectorUrl"] as string;                                       //Case when Hosted Payment Form called from Sales Orders Screen
+            string  hostedFormURL;
+            hostedFormURL = PXContext.Session["CCPaymentConnectorUrl"] as string;                                       //Case when Hosted Payment Form called from Sales Orders Screen
 
-            if (string.IsNullOrEmpty(baseUrl))
+            if (string.IsNullOrEmpty(hostedFormURL))
             {
-                baseUrl = PXContext.GetSlot<string>(nameof(Extentions.GetPaymentConnectorUrl));                   //Case when Hosted Payment Form called fom Sales Order Screen for Acumatica ERP version == 2022 R1
+                hostedFormURL = CCPaymentProcessingHelper.GetPaymentConnectorUrl(HttpContext.Current);                   //Case for Hosted Payment Form called fom Sales Order Screen for Acumatica ERP version >= 2022 R2
             }
-
-            if (string.IsNullOrEmpty(baseUrl)) { 
-                baseUrl = System.Web.HttpContext.Current.GetPaymentConnectorUrl();                                //Case when Payment Form called from Payments and Applications Screen
-            }
-
-            if (string.IsNullOrEmpty(baseUrl))
-            {
-                baseUrl = CCPaymentProcessingHelper.GetPaymentConnectorUrl(HttpContext.Current);                   //Case for Hosted Payment Form called fom Sales Order Screen for Acumatica ERP version >= 2022 R2
-            }
-
-            hostedFormURL = baseUrl.Replace("PaymentConnector.html", "ADCPPaymentConnector.html");
 
             string hfkey = Requests.GetHostedFormUrlKey(ADCPHelper.GetPCGredentials(settingValues));
             string HFSUrl = ComposeHFSUrl(settingValues, hfkey);
@@ -56,16 +45,16 @@ namespace AcumaticaDummyCreditCardPlugin
                 {"Currency",     inputData.CuryID},
                 {"DocType",      inputData.DocumentData.DocType},
                 {"DocRefNbr",    inputData.DocumentData.DocRefNbr},
-                {"TranUID",      inputData.TranUID.ToString()}                                                           //TranUid implementation for 2021 R1
+                {"TranUID",      inputData.TranUID.ToString()},                                                          //TranUid implementation for 2021 R1
+                {"CallBack",     hostedFormURL}
             };
             
-
             return new HostedFormData()
             {
                 Caption = "CLCharge",
-                Url     = hostedFormURL,
+                Url     = HFSUrl,
                 UseGetMethod = true,
-               // Token   = "CLTokenHostedPaymentForm",
+                Token   = "CLTokenHostedPaymentForm",
                 Parameters = parms
             };
         }

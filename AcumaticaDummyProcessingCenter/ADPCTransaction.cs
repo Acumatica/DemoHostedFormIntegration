@@ -8,8 +8,8 @@ namespace AcumaticaDummyProcessingCenter
 {
   [Serializable]
   [PXCacheName("ADPCTransaction")]
-  public class ADPCTransaction : IBqlTable
-  {
+  public class ADPCTransaction : PXBqlTable, IBqlTable
+    {
     
     
     #region PaymentProfileID
