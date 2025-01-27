@@ -14,6 +14,7 @@ namespace AcumaticaDummyCreditCardPlugin
         public const string ADPCUserName = "Username";
         public const string ADPCPassword = "Password";
         public const string ADPCTenant   = "Tenant";
+        public const string ADPCUseCustomHF   = "CustomHF";
         #endregion
 
         #region Default Settings
@@ -21,6 +22,8 @@ namespace AcumaticaDummyCreditCardPlugin
         public const string DefaultADPCUserName = "admin";
         public const string DefaultADPCPassword = "123";
         public const string DefaultADPCTenant   = "Company";
+        public const string DefaultADPCFalse    = "false";
+        public const string DefaultADPCTrue     = "True";
         #endregion
     }
 }

@@ -1,0 +1,34 @@
+﻿<ScreenWithRights AccessRightsMergeRule="ApplyAndKeep">
+    <data-set>
+        <relations format-version="3" relations-version="20240201" main-table="SiteMap">
+            <link from="RolesInCache (ScreenID)" to="SiteMap (ScreenID)" />
+            <link from="RolesInGraph (ScreenID)" to="SiteMap (ScreenID)" />
+            <link from="RolesInMember (ScreenID)" to="SiteMap (ScreenID)" />
+            <link from="Roles (Rolename, ApplicationName)" to="RolesInCache (Rolename, ApplicationName)" type="FromMaster" updateable="False" />
+            <link from="Roles (Rolename, ApplicationName)" to="RolesInGraph (Rolename, ApplicationName)" type="FromMaster" updateable="False" />
+            <link from="Roles (Rolename, ApplicationName)" to="RolesInMember (Rolename, ApplicationName)" type="FromMaster" updateable="False" />
+        </relations>
+        <layout>
+            <table name="SiteMap">
+                <table name="RolesInCache" uplink="(ScreenID) = (ScreenID)" />
+                <table name="RolesInGraph" uplink="(ScreenID) = (ScreenID)" />
+                <table name="RolesInMember" uplink="(ScreenID) = (ScreenID)" />
+            </table>
+            <table name="Roles" />
+        </layout>
+        <data>
+            <SiteMap>
+                <row Position="21519" Title="ADPC - Transaction" Url="~/Pages/AD/ADPC3020.aspx" ScreenID="ADPC3020" NodeID="b33d26b7-a5a5-4291-8dab-2a3e17ea98d1" ParentID="00000000-0000-0000-0000-000000000000" SelectedUI="E">
+                    <RolesInGraph Rolename="AR Clerk" ApplicationName="/" Accessrights="4" />
+                    <RolesInGraph Rolename="AR Admin" ApplicationName="/" Accessrights="4" />
+                    <RolesInGraph Rolename="Administrator" ApplicationName="/" Accessrights="4" />
+                </row>
+            </SiteMap>
+            <Roles>
+                <row Rolename="AR Clerk" ApplicationName="/" Descr="Access to AR functions" Guest="0" />
+                <row Rolename="AR Admin" ApplicationName="/" Descr="Access to AR functions and settings" Guest="0" />
+                <row Rolename="Administrator" ApplicationName="/" Descr="System Administrator" Guest="0" />
+            </Roles>
+        </data>
+    </data-set>
+</ScreenWithRights>

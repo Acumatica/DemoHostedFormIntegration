@@ -25,12 +25,13 @@ namespace AcumaticaDummyProcessingCenter
             WriteLog("Acumatica Dummy Processing Center Plugin started working.");
             string CPIDNumSeq = "ADPCCPID";
             string TranNumSeq = "ADPCTRAN";
-
+            WriteLog("Creating Numbering sequence for ADPC customer profile ID.");
             ADPCSetupMaint ADPCMaint = PXGraph.CreateInstance<ADPCSetupMaint>();
-            var setup = new PXSelect<ADPCSetup>(ADPCMaint).SelectSingle();
+            var setup = new PXSelect<ADPCSetup>(ADPCMaint).SelectSingle() ?? new ADPCSetup();
             Numbering CPIDNumbering = PXSelect<Numbering, Where<Numbering.numberingID, Equal<Required<Numbering.numberingID>>>>.Select(ADPCMaint, CPIDNumSeq);
             if (CPIDNumbering == null)
             {
+                
                 NumberingMaint numberingMaint = PXGraph.CreateInstance<NumberingMaint>();
                 Numbering newNumbering = new Numbering()
                 {
@@ -61,6 +62,7 @@ namespace AcumaticaDummyProcessingCenter
                     {
                          WriteLog("Failed. Could not save the Numbering Sequence: " + e.Message);
                     }
+                    WriteLog($"Adding Numbering Sequence to configuration");
                     setup.CPIDNumberingID = newSequence.NumberingID;
                 }
             }
@@ -72,6 +74,7 @@ namespace AcumaticaDummyProcessingCenter
             Numbering TranNumbering = PXSelect<Numbering, Where<Numbering.numberingID, Equal<Required<Numbering.numberingID>>>>.Select(ADPCMaint, TranNumSeq);
             if (TranNumbering == null)
             {
+                 WriteLog("Creating Numbering sequence for ADPC Transaction ID.");
                 NumberingMaint numberingMaint = PXGraph.CreateInstance<NumberingMaint>();
                 Numbering newNumbering = new Numbering
                 {

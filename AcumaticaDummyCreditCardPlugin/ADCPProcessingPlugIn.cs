@@ -6,7 +6,7 @@ using Acumatica.ADPCGateway;
 
 namespace AcumaticaDummyCreditCardPlugin
 {
-    [PX.CCProcessingBase.Attributes.PXDisplayTypeName("Acumatica Dummy Credit Card Plug-in")]
+    [PX.CCProcessingBase.Attributes.PXDisplayTypeName(ADCPMessages.ADPCPluginName)]
     public class ADCPProcessingPlugIn : ICCProcessingPlugin
     {
         public T CreateProcessor<T>(IEnumerable<SettingsValue> settingValues) where T : class
@@ -74,7 +74,14 @@ namespace AcumaticaDummyCreditCardPlugin
                     DetailID     = ADCPConstants.ADPCTenant,
                     Descr        = ADCPMessages.ADPCTenantDesc,
                     DefaultValue = ADCPConstants.DefaultADPCTenant
-                }
+                },
+                new SettingsDetail
+                {
+                    DetailID = ADCPConstants.ADPCUseCustomHF,
+                    Descr = ADCPMessages.ADPCUseCustomHostedForm,
+                    ControlType = SettingsControlType.CheckBox,
+                    DefaultValue = ADCPConstants.DefaultADPCFalse
+                },
             };
             return settings;
         }
