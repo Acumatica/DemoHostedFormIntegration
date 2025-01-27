@@ -29,6 +29,8 @@ To configure the Plug-in, on the Processing Center screen you should specify the
  - Process payments using new cards (HostedPaymentForm)
  - Record CC Payment
  - Validate CC Payment
+ - Supports Hosted Forms provided by Processing Center and Custom Hosted Forms
+ - Supports Modern UI starting from 2025 R1 Beta
 
 ### Legacy version
 The repository also contains the previous version of plug-in in the **Legacy** folder with a ICCPlugin implementation that is not linked to any Processing Center, and therefore having limited functionality. The main focus is to demonstrate possibility to pass the data from Acumatica to Hosted Form and vice versa.
